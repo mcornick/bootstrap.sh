@@ -80,7 +80,7 @@ fi
 E0F
 
 ### If vim is installed, write .vimrc
-if command -v zsh >/dev/null; then
+if command -v vim >/dev/null; then
   cat <<E0F >"$HOME/.vimrc"
 if &compatible
   set nocompatible
@@ -130,7 +130,7 @@ E0F
 fi
 
 ### If tmux is installed, write .tmux.conf
-if command -v zsh >/dev/null; then
+if command -v tmux >/dev/null; then
   cat <<E0F >"$HOME/.tmux.conf"
 unbind C-b
 set-option -g prefix C-a
