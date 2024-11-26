@@ -79,8 +79,9 @@ if [ -f "\$HOME/.bashrc.local" ]; then
 fi
 E0F
 
-### Write .vimrc
-cat <<E0F >"$HOME/.vimrc"
+### If vim is installed, write .vimrc
+if command -v zsh >/dev/null; then
+  cat <<E0F >"$HOME/.vimrc"
 if &compatible
   set nocompatible
 endif
@@ -126,9 +127,11 @@ if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
 E0F
+fi
 
-### Write .tmux.conf
-cat <<E0F >"$HOME/.tmux.conf"
+### If tmux is installed, write .tmux.conf
+if command -v zsh >/dev/null; then
+  cat <<E0F >"$HOME/.tmux.conf"
 unbind C-b
 set-option -g prefix C-a
 bind C-a send-prefix
@@ -159,8 +162,9 @@ if '[ -e ~/.tmux.conf.local ]' {
   source-file ~/.tmux.conf.local
 }
 E0F
+fi
 
-### Write .gitconfig
+### If git is installed, write .gitconfig
 if command -v git >/dev/null; then
   git config --global branch.autosetupmerge 'true'
   git config --global color.ui 'auto'
