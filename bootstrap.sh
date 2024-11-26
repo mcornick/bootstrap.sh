@@ -178,8 +178,7 @@ fi
 touch "$HOME/.gitignore_global"
 
 ### If zsh is installed, write .zshrc and .zlogout
-#if command -v zsh >/dev/null; then
-if true; then
+if command -v zsh >/dev/null; then
   echo 'setopt PROMPT_SUBST' >"$HOME/.zshrc"
   if [ -f "$HOME/.git-prompt.sh" ]; then
     echo '. "$HOME/.git-prompt.sh"' >>"$HOME/.zshrc"
