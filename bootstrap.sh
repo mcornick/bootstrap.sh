@@ -64,7 +64,7 @@ export LESS="FXMRc"
 export PAGER="less"
 export PATH="\$HOME/.local/bin:\$PATH"
 export VISUAL="$editor"
-if [[ -f "$prefix/share/bash-completion/bash_completion" ]]; then
+if [ -f "$prefix/share/bash-completion/bash_completion" ]; then
   . "$prefix/share/bash-completion/bash_completion"
 fi
 case "\$TERM" in
@@ -158,7 +158,7 @@ set-option -g message-style bg=black
 set-option -ag message-style fg=white
 set -g status-right-length 50
 set -g status-left-length 20
-if '[ -e ~/.tmux.conf.local ]' {
+if '[ -f ~/.tmux.conf.local ]' {
   source-file ~/.tmux.conf.local
 }
 E0F
