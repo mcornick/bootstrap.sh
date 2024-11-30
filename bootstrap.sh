@@ -41,12 +41,14 @@ E0F
 echo "set completion-ignore-case On" >"$HOME/.inputrc"
 
 ### Write .bashrc
-if [ -f "$HOME/.git-prompt.sh" ]; then
-  echo '. "$HOME/.git-prompt.sh"' >"$HOME/.bashrc"
-  printf 'PS1=%s\\u@\\h:\\w$(__git_ps1 " (%%s)")\\$ %s\n' "'" "'" >>"$HOME/.bashrc"
+cat <<E0F >"$HOME/.bashrc"
+if [ -f "\$HOME/.git-prompt.sh" ]; then
+  . "\$HOME/.git-prompt.sh"
+  PS1='\u@\h:\w\$(__git_ps1 " (%s)")\\$ '
 else
-  echo 'PS1="\u@\h:\w\$ "' >"$HOME/.bashrc"
+  PS1="\u@\h:\w\$ "
 fi
+E0F
 ##### Use color ls on Linux, standard ls elsewhere
 if [ "$(uname)" = "Linux" ]; then
   echo 'alias ls="ls --color=auto"' >>"$HOME/.bashrc"
@@ -183,14 +185,14 @@ touch "$HOME/.gitignore_global"
 
 ### If zsh is installed, write .zshrc and .zlogout
 if command -v zsh >/dev/null; then
-  echo 'setopt PROMPT_SUBST' >"$HOME/.zshrc"
-  if [ -f "$HOME/.git-prompt.sh" ]; then
-    echo '. "$HOME/.git-prompt.sh"' >>"$HOME/.zshrc"
-    printf 'PS1=%s%%n@%%m:%%~$(__git_ps1 " (%%s)")%%%% %s\n' "'" "'" >>"$HOME/.zshrc"
-  else
-    echo 'PS1="%n@%m:%~%% "' >>"$HOME/.zshrc"
-  fi
-  cat <<E0F >>"$HOME/.zshrc"
+  cat <<E0F >"$HOME/.zshrc"
+setopt PROMPT_SUBST
+if [ -f "\$HOME/.git-prompt.sh" ]; then
+  . "\$HOME/.git-prompt.sh"
+  PS1='%n@%m:%~\$(__git_ps1 " (%s)")%% '
+else
+  PS1="%n@%m:%~%% "
+fi
 HISTFILE="\$HOME/.zsh_history"
 HISTSIZE=2000
 SAVEHIST=1000
