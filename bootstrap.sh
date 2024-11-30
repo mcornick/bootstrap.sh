@@ -118,6 +118,7 @@ set tabpagemax=50
 set ttimeout
 set ttimeoutlen=100
 set viewoptions-=options
+set viminfo=""
 set wildmenu
 autocmd BufRead,BufNewFile *.md set filetype=markdown textwidth=72
 autocmd BufRead,BufNewFile *.mdoc set filetype=nroff
