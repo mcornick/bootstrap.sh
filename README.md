@@ -6,10 +6,10 @@ following files on many different Unix-like systems:
 - `.bashrc` (most shell config happens here)
 - `.bash_profile` (pulls in .bashrc)
 - `.bash_logout` (clears screen)
-- `.gitconfig`
+- `.gitconfig` (only if git is installed)
 - `.inputrc` (to make bash tab-completion case insensitive)
-- `.tmux.conf`
-- `.vimrc`
+- `.tmux.conf` (only if tmux is installed)
+- `.vimrc` (only if vim is installed)
 - `.zshrc` and `.zlogout` (only if zsh is installed)
 
 All of the files, except `.gitconfig` and `.inputrc`, can be extended by
