@@ -45,6 +45,12 @@ cat <<E0F >"$HOME/.bashrc"
 if [ -f "\$HOME/.git-prompt.sh" ]; then
   . "\$HOME/.git-prompt.sh"
   PS1='\u@\h:\w\$(__git_ps1 " (%s)")\\$ '
+elif [ -f "$prefix/share/git-core/contrib/completion/git-prompt.sh" ]; then
+  . "$prefix/share/git-core/contrib/completion/git-prompt.sh"
+  PS1='\u@\h:\w\$(__git_ps1 " (%s)")\\$ '
+elif [ -f "$prefix/lib/git-core/git-sh-prompt" ]; then
+  . "$prefix/lib/git-core/git-sh-prompt"
+  PS1='\u@\h:\w\$(__git_ps1 " (%s)")\\$ '
 else
   PS1="\u@\h:\w\$ "
 fi
